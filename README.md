@@ -7,45 +7,35 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project allows to interact with the Spotify API where an endpoint was created to get all the albums of an band.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Get Starting
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Clone or download this repository to your project folder.
+1. Run `composer install` on root of this project.
+1. Setup your `.env` file (the clientId and ClientSecret of the Spotify app is required).
+1. Run `php artisan serve` to run the project.
 
-## Learning Laravel
+## Testing the application
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+To correctly perform the tests we suggest using [Postman](https://identity.getpostman.com/signup?continue=https%3A%2F%2Fgo.postman.co%2Fbuild).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Get albums by band name
 
-## Laravel Sponsors
+1. Open Postman and create a new `GET` request pointing to the following address: `http://127.0.0.1:8000/api/v1/albums`
+1. In the `Header` tab, add (if it does not exist) a new key `Content-Type` with the value `application/json`.
+1. In the `Params` tab add the following `KEY` and `VALUE`:
+   
+    | KEY | VALUE         |
+    |-----|---------------|
+    | q   | {{band-name}} |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+> **NOTE:** The band name must be in dash-case (separated by hyphens). For example `the-beatles`.
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+1. Click on the `Send` button and the request will be sent to the project, you should receive a response with the status `200 Ok` and an array with the band albums introduced.
+![](.\doc\images\response_band_albums.png)
 
 ## Contributing
 
